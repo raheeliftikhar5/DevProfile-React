@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter, Route} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import store from './store';
+
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Landing from './views/Landing';
+import Register from './views/Register';
+import Login from './views/Login';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar/>
+          <Route exact path="/" component={Landing}></Route>
+          <div className="container">
+            <Route exact path="/register" component={Register}></Route>
+            <Route exact path="/login" component={Login}></Route>
+          </div>
+          <Footer/>
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

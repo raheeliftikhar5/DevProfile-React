@@ -1,0 +1,7 @@
+const SET_USER_DATA = 'SET_USER_DATA';
+const GET_ERRORS = 'GET_ERRORS';
+
+export {
+  SET_USER_DATA,
+  GET_ERRORS,
+}
